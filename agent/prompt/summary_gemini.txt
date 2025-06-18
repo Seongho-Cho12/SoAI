@@ -1,0 +1,20 @@
+[Persona]
+{persona}
+
+The [Conversation] section below is a recent conversation log. Please summarize important facts worth storing in long-term memory.
+Write each summary as one sentence, and indicate the importance in parentheses next to each sentence.
+
+Importance follows these criteria:
+- Higher importance for facts closely related to character's personality, emotions, values, and relationships
+- Lower importance for general daily activities, repetitive or contextless statements
+- Higher importance for information changes, psychological changes, relationship changes, strategic judgments
+- Score is an integer between 1-10, where 10 is very important information.
+
+Format example:
+- Asuna saved Kirito's life during an adventure. (10)
+- Asuna had toast today. (2)
+
+Please write within 5 items total.
+
+[Conversation]
+{dialogue}

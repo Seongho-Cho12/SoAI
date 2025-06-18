@@ -121,6 +121,9 @@ def build_langgraph(
     analysis_llm: BaseLanguageModel,
     response_llm: BaseLanguageModel,
     summary_llm: BaseLanguageModel,
+    analysis_name: str,
+    response_name: str,
+    summary_name: str,
     me: str,
     you: str
 ) -> StateGraph:
@@ -136,9 +139,9 @@ def build_langgraph(
         with open(os.path.join(dir, f"{name}.txt"), "r", encoding="utf-8") as f:
             return f.read()
     persona_content          = load_prompt(MEMORY_DIR, "persona")
-    question_analysis_prompt = PromptTemplate.from_template(load_prompt(PROMPT_DIR, "question_analysis")).partial(persona=persona_content)
-    response_prompt          = PromptTemplate.from_template(load_prompt(PROMPT_DIR, "response")).partial(persona=persona_content)
-    summary_prompt           = PromptTemplate.from_template(load_prompt(PROMPT_DIR, "summary")).partial(persona=persona_content)
+    question_analysis_prompt = PromptTemplate.from_template(load_prompt(PROMPT_DIR, f"question_analysis_{analysis_name}")).partial(persona=persona_content)
+    response_prompt          = PromptTemplate.from_template(load_prompt(PROMPT_DIR, f"response_{response_name}")).partial(persona=persona_content)
+    summary_prompt           = PromptTemplate.from_template(load_prompt(PROMPT_DIR, f"summary_{summary_name}")).partial(persona=persona_content)
 
     embedder = InstructorEmbeddingsWrapper()
     retriever = CachedMemoryRetriever(
